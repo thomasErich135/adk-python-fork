@@ -510,9 +510,12 @@ class Runner:
       *,
       user_id: str,
       session_id: str,
-      rewind_before_invocation_id: str,
+      rewind_before_invocation_id: str,      
+      run_config: Optional[RunConfig] = None,
   ) -> None:
     """Rewinds the session to before the specified invocation."""
+    run_config = run_config or RunConfig()
+
     session = await self.session_service.get_session(
         app_name=self.app_name, user_id=user_id, session_id=session_id, config=run_config.get_session_config
     )
@@ -1144,6 +1147,8 @@ class Runner:
         - Performance optimization
         Please use run_async() with proper configuration.
     """
+    run_config = run_config or RunConfig()
+    
     session = await self.session_service.get_session(
         app_name=self.app_name, user_id=user_id, session_id=session_id, config=run_config.get_session_config
     )
