@@ -177,14 +177,6 @@ class VertexAiSessionService(BaseSessionService):
             f'Session {session_id} does not belong to user {user_id}.'
         )
 
-<<<<<<< HEAD
-      if get_session_response.user_id != user_id:
-        raise ValueError(
-            f'Session {session_id} does not belong to user {user_id}.'
-        )
-
-=======
->>>>>>> main
       update_timestamp = get_session_response.update_time.timestamp()
       session = Session(
           app_name=app_name,
